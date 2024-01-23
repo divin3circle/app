@@ -72,7 +72,7 @@ function App() {
   // if (loading) return <div className="App">Loading...</div>;
 
   return (
-    <div className="App">
+    <div className="App font-sans">
       <Navbar />
       <Landing />
     </div>
