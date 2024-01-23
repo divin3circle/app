@@ -11,7 +11,7 @@ const Navbar = () => {
         </div>
         {/*  Inua*/}
         <div>
-          <h1 className="font-bold text-3xl text-green-500 ">InuaDAO</h1>
+          <h1 className="font-bold text-3xl text-green-500 ">InuaDAO.</h1>
         </div>
       </div>
       <div>
