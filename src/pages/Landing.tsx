@@ -5,10 +5,15 @@ import Advantages from '../components/ui/Advantages';
 import Footer from '../components/footer/Footer';
 import Token from '../components/ui/Token';
 
-const Landing = () => {
+export type TLoadingProps = {
+  loading: boolean;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const Landing = ({ loading, setLoading }: TLoadingProps) => {
   return (
     <div>
-      <Hero />
+      <Hero loading={loading} setLoading={setLoading} />
       <About />
       <Token />
       <Advantages />

@@ -1,16 +1,30 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import azleLogo from './assets/azle_logo.svg';
-import azleShadow from './assets/azle_shadow.png';
-import reactLogo from './assets/react.svg';
-import viteLogo from './assets/vite.svg';
 import { backend } from './declarations/backend';
 import Navbar from './components/header/Navbar';
-import Landing from './home/Landing';
+import Landing from './pages/Landing';
+import { Unsubscribe, User, initJuno } from '@junobuild/core';
+import { authSubscribe } from '@junobuild/core';
+import Dashboard from './pages/Dashboard';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Error from './components/ui/Error';
+import { Spinner } from './components/ui/Loading';
 
 function App() {
   const [count, setCount] = useState<number | undefined>();
   const [loading, setLoading] = useState(false);
+  const [user, setUser] = useState<User | null | undefined>(undefined);
+  useEffect(() => {
+    (async () =>
+      await initJuno({
+        satelliteId: 'zfhyx-fyaaa-aaaal-adpaa-cai',
+      }))();
+    const sub: Unsubscribe = authSubscribe((user: User | null): void =>
+      setUser(user),
+    );
+
+    return () => sub();
+  }, []);
 
   // Get the current counter value
   // const fetchCount = async () => {
@@ -69,12 +83,40 @@ function App() {
   //   fetchCount();
   // }, []);
 
-  // if (loading) return <div className="App">Loading...</div>;
+  if (loading)
+    return (
+      <div className="h-screen flex justify-center items-center">
+        <Spinner />
+      </div>
+    );
 
   return (
     <div className="App font-sans">
       <Navbar />
-      <Landing />
+
+      <BrowserRouter>
+        <Routes>
+          <Route
+            index
+            element={<Landing loading={loading} setLoading={setLoading} />}
+          />
+          <Route
+            path="/home"
+            element={<Landing loading={loading} setLoading={setLoading} />}
+          />
+          <Route
+            path="/dashboard"
+            element={
+              <Dashboard
+                user={user}
+                loading={loading}
+                setLoading={setLoading}
+              />
+            }
+          />
+          <Route path="*" element={<Error />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

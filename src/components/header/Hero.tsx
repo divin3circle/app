@@ -1,6 +1,24 @@
 import React from 'react';
+import { InternetIdentityProvider, signIn } from '@junobuild/core';
+import { useNavigate } from 'react-router-dom';
+import { TLoadingProps } from '../../pages/Landing';
 
-const Hero = () => {
+type THeroProps = {
+  loading: boolean;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const Hero = ({ loading, setLoading }: THeroProps) => {
+  const navigate = useNavigate();
+  const handleLogin = async () => {
+    setLoading(true);
+    await signIn({
+      provider: new InternetIdentityProvider({}),
+    });
+    setLoading(false);
+    navigate('/dashboard');
+  };
+
   return (
     <div>
       <section className="relative bg-[url(https://www.shutterstock.com/image-photo/beautiful-female-african-american-business-600nw-1601707636.jpg)] bg-contain bg-center bg-no-repeat">
@@ -25,7 +43,10 @@ const Hero = () => {
             </p>
 
             <div className="md:mt-8 flex flex-wrap gap-4 text-center mt-16">
-              <button className="bg-green-500 px-12 py-3 text-white text-sm font-medium rounded w-full block shadow hover:text-green-500 border-green-500 hover:bg-transparent border-[1px] ease-in duration-150 sm:w-auto">
+              <button
+                className="bg-green-500 px-12 py-3 text-white text-sm font-medium rounded w-full block shadow hover:text-green-500 border-green-500 hover:bg-transparent border-[1px] ease-in duration-150 sm:w-auto"
+                onClick={handleLogin}
+              >
                 Get Started
               </button>
 
