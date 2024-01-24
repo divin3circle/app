@@ -16,7 +16,7 @@ const Hero = ({ loading, setLoading }: THeroProps) => {
       provider: new InternetIdentityProvider({}),
     });
     setLoading(false);
-    navigate('/dashboard');
+    navigate('/details');
   };
 
   return (

@@ -9,6 +9,7 @@ import Dashboard from './pages/Dashboard';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Error from './components/ui/Error';
 import { Spinner } from './components/ui/Loading';
+import Details from './pages/Details';
 
 function App() {
   const [count, setCount] = useState<number | undefined>();
@@ -114,6 +115,7 @@ function App() {
               />
             }
           />
+          <Route path="/details" element={<Details />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </BrowserRouter>
