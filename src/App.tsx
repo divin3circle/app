@@ -15,6 +15,19 @@ function App() {
   const [count, setCount] = useState<number | undefined>();
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState<User | null | undefined>(undefined);
+  const [finalData, setFinalData] = useState({
+    username: '',
+    type: '',
+    interest: '',
+  });
+
+  if (
+    finalData.username !== '' &&
+    finalData.type !== '' &&
+    finalData.interest !== ''
+  ) {
+    console.log(finalData);
+  }
   useEffect(() => {
     (async () =>
       await initJuno({
@@ -112,10 +125,17 @@ function App() {
                 user={user}
                 loading={loading}
                 setLoading={setLoading}
+                finalData={finalData}
+                setFinalData={setFinalData}
               />
             }
           />
-          <Route path="/details" element={<Details />} />
+          <Route
+            path="/details"
+            element={
+              <Details finalData={finalData} setFinalData={setFinalData} />
+            }
+          />
           <Route path="*" element={<Error />} />
         </Routes>
       </BrowserRouter>

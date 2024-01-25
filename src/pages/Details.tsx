@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Stepper from '../components/ui/Stepper';
 import StepperControls from '../components/ui/StepperControls';
 import UserType from '../components/steps/UserType';
@@ -6,15 +6,81 @@ import Preferences from '../components/steps/Preferences';
 import Final from '../components/steps/Final';
 import { StepperContext } from '../context/StepperContext';
 import { useNavigate } from 'react-router-dom';
+import { getDoc, setDoc } from '@junobuild/core';
 
-function Details() {
+type TDetailsProps = {
+  finalData: {
+    username: string;
+    type: string;
+    interest: string;
+  };
+  setFinalData: React.Dispatch<
+    React.SetStateAction<{
+      username: string;
+      type: string;
+      interest: string;
+    }>
+  >;
+};
+
+function Details({ finalData, setFinalData }: TDetailsProps): JSX.Element {
   const [currentStep, setCurrentStep] = React.useState(1);
   const [userData, setUserData] = React.useState('');
-  const [finalData, setFinalData] = React.useState<any[]>([]);
+  const [isSubmitted, setIsSubmitted] = React.useState(false);
+  const [data, setData] = React.useState({
+    username: '',
+    type: '',
+    interest: '',
+  });
   const navigate = useNavigate();
 
   const steps = ['User Type', 'Preferences', 'Complete'];
-  console.log(userData);
+
+  useEffect(() => {
+    if (
+      isSubmitted &&
+      userData['username'] !== '' &&
+      userData['type'] !== '' &&
+      userData['interest'] !== ''
+    ) {
+      setData({
+        username: userData['username'],
+        type: userData['type'],
+        interest: userData['interest'],
+      });
+    }
+    // console.log(data);
+  }, [userData, isSubmitted]);
+
+  useEffect(() => {
+    if (data.username !== '' && data.type !== '' && data.interest !== '') {
+      console.log(data);
+      const saveData = async () => {
+        try {
+          await setDoc({
+            collection: 'test',
+            doc: {
+              key: data['username'],
+              data: {
+                name: data['username'],
+                type: data['type'],
+                interest: data['interest'],
+              },
+            },
+          });
+          setFinalData({
+            username: data['username'],
+            type: data['type'],
+            interest: data['interest'],
+          });
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      saveData();
+    }
+    console.log(isSubmitted);
+  }, [data]);
   const displaySteps = (step: number) => {
     switch (step) {
       case 1:
@@ -33,7 +99,11 @@ function Details() {
   const handleClick = (direction: string) => {
     let newStep = currentStep;
     direction === 'next' ? newStep++ : newStep--;
+
     newStep > 0 && newStep <= steps.length && setCurrentStep(newStep);
+    if (currentStep === steps.length - 1) {
+      setIsSubmitted(true);
+    }
   };
   return (
     <div className="md:w-3/4 mx-auto shadow-xl rounded-xl p-2 bg-white">
@@ -55,11 +125,14 @@ function Details() {
       </div>
       {/* controls*/}
       <div>
-        <StepperControls
-          handleClick={handleClick}
-          currentStep={currentStep}
-          steps={steps}
-        />
+        {currentStep !== steps.length && (
+          <StepperControls
+            handleClick={handleClick}
+            currentStep={currentStep}
+            steps={steps}
+            setIsSubmitted={setIsSubmitted}
+          />
+        )}
       </div>
     </div>
   );

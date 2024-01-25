@@ -5,6 +5,7 @@ type TStepperControlsProps = {
   currentStep: number;
   steps: string[];
   handleClick: (direction: string) => void;
+  setIsSubmitted: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 function StepperControls({

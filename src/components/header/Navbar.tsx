@@ -16,10 +16,10 @@ const Navbar = () => {
       </div>
       <div>
         <button
-          className="bg-green-500 px-4 py-2 text-white font-semibold text-xl rounded-md hover:text-green-500 border-green-500 hover:bg-transparent border-[1px] ease-in duration-150"
+          className="bg-green-500 px-2 py-2 text-white font-semibold rounded-md hover:text-green-500 border-green-500 hover:bg-transparent border-[1px] ease-in duration-150"
           onClick={() => {}}
         >
-          Get Started
+          Connect Wallet
         </button>
       </div>
     </div>

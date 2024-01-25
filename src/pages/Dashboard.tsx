@@ -1,20 +1,39 @@
 import { User, signOut } from '@junobuild/core';
 import React from 'react';
+import { useContext } from 'react';
+import { StepperContext } from '../context/StepperContext';
 
 type TDashboardProps = {
   user: User | null | undefined;
   loading: boolean;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  finalData: {
+    username: string;
+    type: string;
+    interest: string;
+  };
+  setFinalData: React.Dispatch<
+    React.SetStateAction<{
+      username: string;
+      type: string;
+      interest: string;
+    }>
+  >;
 };
 
 function Dashboard({
   user,
   loading,
   setLoading,
+  finalData,
+  setFinalData,
 }: TDashboardProps): JSX.Element {
+  // const { userData, setUserData } = useContext(StepperContext);
   return (
     <div>
-      <h1>The Dashboard</h1>
+      <h1>
+        Welcome {finalData.username !== undefined ? finalData.username : '....'}{' '}
+      </h1>
       {user !== undefined && user !== null ? (
         <div>
           <button

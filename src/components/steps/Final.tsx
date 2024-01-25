@@ -1,15 +1,17 @@
 import React from 'react';
 import { FaCheckCircle } from 'react-icons/fa';
 import { NavigateFunction } from 'react-router-dom';
-
+import { useContext } from 'react';
+import { StepperContext } from '../../context/StepperContext';
 import { useSpring, animated } from 'react-spring';
+
 type TFinalProps = {
   navigate: NavigateFunction;
 };
 function Final({ navigate }: TFinalProps) {
+  // const { userData, setUserData } = useContext(StepperContext);
   const fade = useSpring({ opacity: 1, from: { opacity: 0 } });
   const navigateToDashboard = () => {
-    // navigate to dashboard
     navigate('/dashboard');
   };
   return (

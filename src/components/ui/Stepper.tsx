@@ -62,14 +62,11 @@ function Stepper({ currentStep, steps }: TStepperProps) {
       ),
     );
     stepRef.current = stepsState;
-    console.log(stepRef.current);
     const current = updateStep(currentStep - 1, stepRef.current);
     setNewStep(current);
   }, [currentStep, steps]);
 
   const displaySteps = newStep.map((step, index) => {
-    console.log(step);
-    console.log(newStep);
     return (
       <div
         key={index}
