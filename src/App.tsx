@@ -19,6 +19,7 @@ function App() {
     username: '',
     type: '',
     interest: '',
+    token: 10,
   });
 
   if (

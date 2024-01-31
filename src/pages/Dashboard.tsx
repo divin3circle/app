@@ -32,7 +32,7 @@ function Dashboard({
   return (
     <div>
       <h1>
-        Welcome {finalData.username !== undefined ? finalData.username : '....'}{' '}
+        Welcome {finalData.username === '' ? '....' : finalData.username}{' '}
       </h1>
       {user !== undefined && user !== null ? (
         <div>

@@ -7,18 +7,21 @@ import Final from '../components/steps/Final';
 import { StepperContext } from '../context/StepperContext';
 import { useNavigate } from 'react-router-dom';
 import { getDoc, setDoc } from '@junobuild/core';
+import { to } from 'react-spring';
 
 type TDetailsProps = {
   finalData: {
     username: string;
     type: string;
     interest: string;
+    token: number;
   };
   setFinalData: React.Dispatch<
     React.SetStateAction<{
       username: string;
       type: string;
       interest: string;
+      token: number;
     }>
   >;
 };
@@ -31,6 +34,7 @@ function Details({ finalData, setFinalData }: TDetailsProps): JSX.Element {
     username: '',
     type: '',
     interest: '',
+    token: 0,
   });
   const navigate = useNavigate();
 
@@ -47,6 +51,7 @@ function Details({ finalData, setFinalData }: TDetailsProps): JSX.Element {
         username: userData['username'],
         type: userData['type'],
         interest: userData['interest'],
+        token: 10,
       });
     }
     // console.log(data);
@@ -65,6 +70,7 @@ function Details({ finalData, setFinalData }: TDetailsProps): JSX.Element {
                 name: data['username'],
                 type: data['type'],
                 interest: data['interest'],
+                token: 10,
               },
             },
           });
@@ -72,6 +78,7 @@ function Details({ finalData, setFinalData }: TDetailsProps): JSX.Element {
             username: data['username'],
             type: data['type'],
             interest: data['interest'],
+            token: 10,
           });
         } catch (err) {
           console.log(err);
