@@ -4,6 +4,7 @@ import About from '../components/ui/About';
 import Advantages from '../components/ui/Advantages';
 import Footer from '../components/footer/Footer';
 import Token from '../components/ui/Token';
+import Navbar from '../components/header/Navbar';
 
 export type TLoadingProps = {
   loading: boolean;
@@ -13,6 +14,7 @@ export type TLoadingProps = {
 const Landing = ({ loading, setLoading }: TLoadingProps) => {
   return (
     <div>
+      <Navbar />
       <Hero loading={loading} setLoading={setLoading} />
       <About />
       <Token />

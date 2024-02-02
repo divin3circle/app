@@ -10,6 +10,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Error from './components/ui/Error';
 import { Spinner } from './components/ui/Loading';
 import Details from './pages/Details';
+import { SidebarProvider } from './context/SidebarContext';
 
 function App() {
   const [count, setCount] = useState<number | undefined>();
@@ -107,8 +108,6 @@ function App() {
 
   return (
     <div className="App font-sans">
-      <Navbar />
-
       <BrowserRouter>
         <Routes>
           <Route

@@ -31,7 +31,7 @@ function Advantages() {
                 className="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-green-500 focus:outline-none focus:ring"
                 href="/accountant"
               >
-                <span className="inline-block rounded-lg bg-gray-50 p-3">
+                <span className="inline-block rounded-lg bg-gray-800 p-3">
                   <svg
                     className="h-6 w-6"
                     fill="none"
@@ -50,7 +50,7 @@ function Advantages() {
                   </svg>
                 </span>
 
-                <h2 className="mt-2 font-bold">Data Ownership</h2>
+                <h2 className="mt-2 font-bold text-black">Data Ownership</h2>
 
                 <p className="hidden sm:mt-1 sm:block sm:text-sm sm:text-gray-600">
                   Control your own identities and data within the DAO
@@ -61,7 +61,7 @@ function Advantages() {
                 className="block rounded-xl border border-gray-100 p-4 shadow-sm hover:ring-green-500 hover:ring-1 focus:outline-none focus:ring"
                 href="/accountant"
               >
-                <span className="inline-block rounded-lg bg-gray-50 p-3">
+                <span className="inline-block rounded-lg bg-gray-800 p-3">
                   <svg
                     className="h-6 w-6"
                     fill="none"
@@ -80,7 +80,7 @@ function Advantages() {
                   </svg>
                 </span>
 
-                <h2 className="mt-2 font-bold">Reverse Gas Model</h2>
+                <h2 className="mt-2 font-bold text-black">Reverse Gas Model</h2>
 
                 <p className="hidden sm:mt-1 sm:block sm:text-sm sm:text-gray-600">
                   No more gas fees. The DAO pays for all transactions.
@@ -91,7 +91,7 @@ function Advantages() {
                 className="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-green-500 focus:outline-none focus:ring"
                 href="/accountant"
               >
-                <span className="inline-block rounded-lg bg-gray-50 p-3">
+                <span className="inline-block rounded-lg bg-gray-800 p-3">
                   <svg
                     className="h-6 w-6"
                     fill="none"
@@ -110,7 +110,9 @@ function Advantages() {
                   </svg>
                 </span>
 
-                <h2 className="mt-2 font-bold">Speed & Scalability</h2>
+                <h2 className="mt-2 font-bold text-black">
+                  Speed & Scalability
+                </h2>
 
                 <p className="hidden sm:mt-1 sm:block sm:text-sm sm:text-gray-600">
                   The DAO is built on the Internet Computer Protocal.
@@ -121,7 +123,7 @@ function Advantages() {
                 className="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-green-500 focus:outline-none focus:ring"
                 href="/accountant"
               >
-                <span className="inline-block rounded-lg bg-gray-50 p-3">
+                <span className="inline-block rounded-lg bg-gray-800 p-3">
                   <svg
                     className="h-6 w-6"
                     fill="none"
@@ -140,7 +142,7 @@ function Advantages() {
                   </svg>
                 </span>
 
-                <h2 className="mt-2 font-bold">Interoperability</h2>
+                <h2 className="mt-2 font-bold text-black">Interoperability</h2>
 
                 <p className="hidden sm:mt-1 sm:block sm:text-sm sm:text-gray-600">
                   Easily integrate with other Web3 applications and services
@@ -152,7 +154,7 @@ function Advantages() {
                 className="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-green-500 focus:outline-none focus:ring"
                 href="/accountant"
               >
-                <span className="inline-block rounded-lg bg-gray-50 p-3">
+                <span className="inline-block rounded-lg bg-gray-800 p-3">
                   <svg
                     className="h-6 w-6"
                     fill="none"
@@ -171,7 +173,7 @@ function Advantages() {
                   </svg>
                 </span>
 
-                <h2 className="mt-2 font-bold">Open Access</h2>
+                <h2 className="mt-2 font-bold text-black">Open Access</h2>
 
                 <p className="hidden sm:mt-1 sm:block sm:text-sm sm:text-gray-600">
                   Operate directly on the internet without relying on
@@ -183,7 +185,7 @@ function Advantages() {
                 className="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-green-500 focus:outline-none focus:ring"
                 href="/accountant"
               >
-                <span className="inline-block rounded-lg bg-gray-50 p-3">
+                <span className="inline-block rounded-lg bg-gray-800 p-3">
                   <svg
                     className="h-6 w-6"
                     fill="none"
@@ -202,7 +204,10 @@ function Advantages() {
                   </svg>
                 </span>
 
-                <h2 className="mt-2 font-bold"> On-chain Governance</h2>
+                <h2 className="mt-2 font-bold text-black">
+                  {' '}
+                  On-chain Governance
+                </h2>
 
                 <p className="hidden sm:mt-1 sm:block sm:text-sm sm:text-gray-600">
                   The DAO is governed by its members through voting.

@@ -2,6 +2,9 @@ import { User, signOut } from '@junobuild/core';
 import React from 'react';
 import { useContext } from 'react';
 import { StepperContext } from '../context/StepperContext';
+import Sidebar from '../dashboard_components/sidebar/Sidebar';
+import Content from '../dashboard_components/content/Content';
+import { SidebarProvider } from '../context/SidebarContext';
 
 type TDashboardProps = {
   user: User | null | undefined;
@@ -30,8 +33,11 @@ function Dashboard({
 }: TDashboardProps): JSX.Element {
   // const { userData, setUserData } = useContext(StepperContext);
   return (
-    <div>
-      <h1>
+    <div className="app md:m-4">
+      <Sidebar finalData={finalData} />
+
+      <Content finalData={finalData} />
+      {/* <h1>
         Welcome {finalData.username === '' ? '....' : finalData.username}{' '}
       </h1>
       {user !== undefined && user !== null ? (
@@ -46,6 +52,7 @@ function Dashboard({
       ) : (
         <h1>Not logged in</h1>
       )}
+    </div> */}
     </div>
   );
 }
