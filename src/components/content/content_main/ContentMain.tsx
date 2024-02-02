@@ -4,6 +4,10 @@ import Cards from '../../../dashboard_components/cards/Cards';
 import Learning from '../../../learning/Learning';
 import Report from '../../../reports/Reports';
 import Proposal from '../../../budget/Proposals';
+import Loans from '../../../loans/Loans';
+import Monthly from '../../../monthly/Monthly';
+import Tokens from '../../../tokens/Tokens';
+import Finance from '../../../finance/Finance';
 type TFinalDataProps = {
   finalData: {
     username: string;
@@ -21,12 +25,18 @@ function ContentMain({ finalData }: TFinalDataProps) {
       </div>
       <div className="content-grid-two">
         <Proposal />
-      </div>
-      <div className="grid-two-item">
-        <div className="subgrid-two"></div>
-      </div>
-      <div className="grid-two-item">
-        <div className="subgrid-two"></div>
+        <div className="grid-two-item">
+          <div className="subgrid-two">
+            <Loans />
+            <Monthly />
+          </div>
+        </div>
+        <div className="grid-two-item">
+          <div className="subgrid-two">
+            <Tokens />
+            <Finance />
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import { iconsImgs } from './assets/images';
 import { teamImgs } from './assets/images';
+import profile from './assets/profile.jpg';
 export const navigationLinks = [
   { id: 1, title: 'Home', image: iconsImgs.home },
   { id: 2, title: 'Proposals', image: iconsImgs.budget },
@@ -131,5 +132,43 @@ export const subscriptions = [
     title: 'DSTV',
     due_date: '23/12/22',
     amount: 2000,
+  },
+];
+
+export const loans = [
+  {
+    id: 24,
+    title: 'ITO Grants',
+    type: 'Grant',
+    due_date: 'Grant😊',
+    amount: 2000,
+    minToken: 0,
+  },
+  {
+    id: 25,
+    title: 'Inua Mama Loans',
+    type: 'Loan',
+    due_date: 'March',
+    amount: 20000,
+    minToken: 300,
+  },
+  {
+    id: 26,
+    title: 'AgroForex Loans',
+    type: 'Loan',
+    due_date: 'December',
+    amount: 2000,
+    minTokens: 1000,
+  },
+];
+
+export const targets = [
+  {
+    id: 27,
+    image: profile,
+    saving_amount: 25000,
+    title: 'Month Target',
+    date_taken: '23/12/22',
+    amount_left: 4000,
   },
 ];
