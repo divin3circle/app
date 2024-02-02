@@ -15,6 +15,9 @@ import search from '../assets/icons/search.svg';
 import user from '../assets/icons/user.svg';
 import wallet from '../assets/icons/wallet.svg';
 import wealth from '../assets/icons/wealth.svg';
+import team1 from '../assets/team1.jpeg';
+import team from '../assets/team2.webp';
+import team3 from '../assets/team3.jpeg';
 
 export const iconsImgs = {
   alert,
@@ -34,4 +37,10 @@ export const iconsImgs = {
   user,
   wallet,
   wealth,
+};
+
+export const teamImgs = {
+  team1,
+  team,
+  team3,
 };
