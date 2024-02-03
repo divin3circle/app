@@ -14,23 +14,27 @@ function Learning() {
       </div>
       <div className="grid-content">
         <div className="grid-items">
-          {learningTeams.map((learningTeam) => (
-            <div className="grid-item" key={learningTeam.id}>
-              <div className="grid-item-l">
-                <div className="avatar img-fit-cover">
-                  <img src={learningTeam.image} />
+          {learningTeams.length === 0 ? (
+            <p className="text">No available teams</p>
+          ) : (
+            learningTeams.map((learningTeam) => (
+              <div className="grid-item" key={learningTeam.id}>
+                <div className="grid-item-l">
+                  <div className="avatar img-fit-cover">
+                    <img src={learningTeam.image} />
+                  </div>
+                  <p className="text">
+                    {learningTeam.name} <span>{learningTeam.date}</span>
+                  </p>
                 </div>
-                <p className="text">
-                  {learningTeam.name} <span>{learningTeam.date}</span>
-                </p>
+                <div className="grid-item-r">
+                  <span className="text-gray-400">
+                    {learningTeam.members} members
+                  </span>
+                </div>
               </div>
-              <div className="grid-item-r">
-                <span className="text-gray-400">
-                  {learningTeam.members} memebers
-                </span>
-              </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
       </div>
     </div>

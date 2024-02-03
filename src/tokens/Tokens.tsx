@@ -26,12 +26,16 @@ const Tokens = () => {
         </div>
         <ul className="data-list">
           <li className="data-item text-silver-v1">
-            <span className="data-item-text">Total Vault Balance</span>
+            <span className="data-item-text">Total Vault Valuation</span>
             <span className="data-item-value">Ksh 50,000</span>
           </li>
           <li className="data-item text-silver-v1">
             <span className="data-item-text">Staked Tokens Value</span>
             <span className="data-item-value">Ksh 25,000</span>
+          </li>
+          <li className="data-item text-silver-v1">
+            <span className="data-item-text">Current Voting Power</span>
+            <span className="data-item-value">260 Points</span>
           </li>
         </ul>
       </div>

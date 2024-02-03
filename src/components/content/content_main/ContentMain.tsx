@@ -24,7 +24,10 @@ function ContentMain({ finalData }: TFinalDataProps) {
         <Report />
       </div>
       <div className="content-grid-two">
-        <Proposal />
+        <div className="grid-two-item">
+          {' '}
+          <Proposal />
+        </div>
         <div className="grid-two-item">
           <div className="subgrid-two">
             <Loans />
