@@ -8,7 +8,7 @@ export const navigationLinks = [
   { id: 4, title: 'Loans & Grants', image: iconsImgs.wallet },
   { id: 5, title: 'Finacials', image: iconsImgs.bills },
   { id: 6, title: 'My Reports', image: iconsImgs.report },
-  { id: 7, title: 'My Targets', image: iconsImgs.wallet },
+  { id: 7, title: 'Savings', image: iconsImgs.wallet },
   { id: 8, title: 'AI Financials', image: iconsImgs.wealth },
   { id: 9, title: 'Account', image: iconsImgs.user },
   { id: 10, title: 'Settings', image: iconsImgs.gears },

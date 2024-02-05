@@ -8,6 +8,7 @@ import { StepperContext } from '../context/StepperContext';
 import { useNavigate } from 'react-router-dom';
 import { getDoc, setDoc } from '@junobuild/core';
 import { to } from 'react-spring';
+import { learningTeams, reportData, proposals, loans, targets } from '../data';
 
 type TDetailsProps = {
   finalData: {
@@ -71,6 +72,11 @@ function Details({ finalData, setFinalData }: TDetailsProps): JSX.Element {
                 type: data['type'],
                 interest: data['interest'],
                 token: 10,
+                learningTeams,
+                reportData,
+                proposals,
+                loans,
+                targets,
               },
             },
           });
@@ -86,7 +92,6 @@ function Details({ finalData, setFinalData }: TDetailsProps): JSX.Element {
       };
       saveData();
     }
-    console.log(isSubmitted);
   }, [data]);
   const displaySteps = (step: number) => {
     switch (step) {
