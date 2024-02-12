@@ -1,7 +1,67 @@
+type EducationalContent = record {
+  id : text;
+  title : text;
+  content : text;
+  link : text;
+  paid : bool;
+  datePublished : text;
+};
+type Proposal = record {
+  id : text;
+  status : text;
+  isApproved : bool;
+  title : text;
+  owner : text;
+  votes : nat;
+  datePublished : text;
+  description : text;
+};
+type Team = record {
+  id : text;
+  content : vec EducationalContent;
+  members : vec User;
+  name : text;
+  description : text;
+};
+type User = record {
+  id : text;
+  teams : vec record {
+    id : text;
+    content : vec record {
+      id : text;
+      title : text;
+      content : text;
+      link : text;
+      paid : bool;
+      datePublished : text;
+    };
+    members : vec User;
+    name : text;
+    description : text;
+  };
+  votingPowerMaturityDate : text;
+  username : text;
+  votingPower : nat;
+  role : text;
+  businessType : text;
+  dateStaked : text;
+  membershipDate : text;
+  proposals : vec record {
+    id : text;
+    status : text;
+    isApproved : bool;
+    title : text;
+    owner : text;
+    votes : nat;
+    datePublished : text;
+    description : text;
+  };
+  tokenBalance : nat;
+  stakedAmount : nat;
+  hasEducationalAccess : bool;
+};
 service : () -> {
-  add : (nat) -> (nat);
-  dec : () -> (nat);
-  get : () -> (nat) query;
-  inc : () -> (nat);
-  mul : () -> (nat);
+  createUser : (User) -> (User);
+  getUser : (text) -> (bool) query;
+  getUsers : () -> (vec User) query;
 }

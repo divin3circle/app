@@ -13,7 +13,7 @@ export type TLoadingProps = {
 
 const Landing = ({ loading, setLoading }: TLoadingProps) => {
   return (
-    <div>
+    <div className="flex-col items-center">
       <Navbar />
       <Hero loading={loading} setLoading={setLoading} />
       <About />

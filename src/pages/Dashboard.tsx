@@ -5,33 +5,21 @@ import { StepperContext } from '../context/StepperContext';
 import Sidebar from '../dashboard_components/sidebar/Sidebar';
 import Content from '../dashboard_components/content/Content';
 import { SidebarProvider } from '../context/SidebarContext';
+import { DataContext } from '../context/DataContext';
 
 type TDashboardProps = {
-  user: User | null | undefined;
-  loading: boolean;
-  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   finalData: {
     username: string;
     type: string;
     interest: string;
+    token: number;
   };
-  setFinalData: React.Dispatch<
-    React.SetStateAction<{
-      username: string;
-      type: string;
-      interest: string;
-    }>
-  >;
 };
 
-function Dashboard({
-  user,
-  loading,
-  setLoading,
-  finalData,
-  setFinalData,
-}: TDashboardProps): JSX.Element {
+function Dashboard({ finalData }: TDashboardProps): JSX.Element {
   // const { userData, setUserData } = useContext(StepperContext);
+  const { userData, setUserData } = useContext(DataContext);
+  console.log(userData);
   return (
     <div className="app md:m-4">
       <Sidebar finalData={finalData} />

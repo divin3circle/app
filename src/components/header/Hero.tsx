@@ -1,7 +1,14 @@
-import React from 'react';
-import { InternetIdentityProvider, signIn } from '@junobuild/core';
+import React, { useEffect, useState } from 'react';
+import {
+  InternetIdentityProvider,
+  signIn,
+  authSubscribe,
+  Unsubscribe,
+  User,
+} from '@junobuild/core';
 import { useNavigate } from 'react-router-dom';
 import { TLoadingProps } from '../../pages/Landing';
+import { backend } from '../../declarations/backend';
 
 type THeroProps = {
   loading: boolean;
@@ -9,6 +16,29 @@ type THeroProps = {
 };
 
 const Hero = ({ loading, setLoading }: THeroProps) => {
+  const [user, setUser] = useState<User | undefined | null>(undefined);
+  useEffect(() => {
+    const checkMembership = async () => {
+      const sub: Unsubscribe = authSubscribe((user: User | null): void => {
+        console.log(user);
+        setUser(user);
+      });
+      //console.log(user);
+      if (user?.key !== null && user?.key !== undefined) {
+        //console.log(user);
+        const userKey = user.key;
+        //console.log(userKey);
+        const isMember = await backend.getUser(userKey);
+        //console.log(isMember);
+        if (isMember) {
+          navigate('/dashboard');
+        } else {
+          navigate('/user-info');
+        }
+      }
+    };
+    checkMembership();
+  }, [user]);
   const navigate = useNavigate();
   const handleLogin = async () => {
     setLoading(true);
@@ -16,7 +46,7 @@ const Hero = ({ loading, setLoading }: THeroProps) => {
       provider: new InternetIdentityProvider({}),
     });
     setLoading(false);
-    navigate('/details');
+    // navigate('/details');
   };
 
   return (
