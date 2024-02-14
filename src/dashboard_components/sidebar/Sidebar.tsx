@@ -1,6 +1,6 @@
 import React from 'react';
 import './Sidebar.css';
-
+import { useNavigate } from 'react-router-dom';
 import profile from '../../assets/profile.jpg';
 import { navigationLinks } from '../../data';
 import {
@@ -29,16 +29,18 @@ function Sidebar({ finalData }: TFinalDataProps) {
   const [sidebarClass, setSidebarClass] = React.useState('');
   const { isSidebarOpen } = useContext(SidebarContext);
   const [displayName, setDisplayName] = React.useState('');
+  const navigate = useNavigate();
 
   // console.log(initialState);
   const getUserInfo = async () => {
     const userKeyFromStorage = localStorage.getItem('userKey');
+
     // const userKey = userData.id;
     // if (userKey === undefined)
     //   return toast.error('An error occurred, sign in again');
     if (userKeyFromStorage !== null) {
       const currentUser = await backend.getUser(userKeyFromStorage);
-      console.log(currentUser[0]);
+      // console.log(currentUser[0]);
       if (currentUser.length !== 0) {
         setDisplayName(currentUser[0].username);
       }
@@ -54,6 +56,10 @@ function Sidebar({ finalData }: TFinalDataProps) {
       setSidebarClass('');
     }
   }, [isSidebarOpen]);
+  const handleSignOut = async () => {
+    await signOut();
+    navigate('/');
+  };
 
   return (
     <div className={`${sidebarClass} sidebar`}>
@@ -71,7 +77,7 @@ function Sidebar({ finalData }: TFinalDataProps) {
             <li className="nav-item" key={navigationLink.id}>
               <a
                 href="#"
-                onClick={navigationLink.id === 11 ? () => signOut() : () => {}}
+                onClick={navigationLink.id === 11 ? handleSignOut : () => {}}
                 className={`nav-link ${
                   navigationLink.id === activeLinkIdx ? 'active' : null
                 }`}

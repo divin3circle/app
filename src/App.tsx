@@ -13,6 +13,7 @@ import Details from './pages/Details';
 import { SidebarProvider } from './context/SidebarContext';
 import UserInfo from './pages/UserInfo';
 import { DataProvider } from './context/DataContext';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   const [count, setCount] = useState<number | undefined>();
@@ -74,6 +75,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       </div>
+      <Toaster />
     </DataProvider>
   );
 }

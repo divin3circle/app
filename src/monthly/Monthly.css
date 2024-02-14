@@ -38,10 +38,9 @@
   background-color: var(--clr-primar-light);
   height: 10px;
   border-radius: 100vh;
-  margin-top: 8px;
+  margin-top: 2px;
 }
 .grid-c6 .grid-item-fill {
-  width: 60%;
   height: 10px;
   background-color: var(--clr-pumpkin);
   border-radius: 100vh;

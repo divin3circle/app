@@ -71,6 +71,15 @@
     height: auto;
   }
   .content-grid-two .grid-two-item:nth-child(3) .subgrid-two .subgrid-two-item {
-    height: 220px;
+    height: 300px;
+  }
+
+  @media screen and (min-width: 901px) {
+    .content-grid-two
+      .grid-two-item:nth-child(3)
+      .subgrid-two
+      .subgrid-two-item {
+      height: 240px;
+    }
   }
 }

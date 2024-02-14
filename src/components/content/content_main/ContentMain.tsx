@@ -21,7 +21,7 @@ function ContentMain({ finalData }: TFinalDataProps) {
       <div className="content-grid-one">
         <Cards finalData={finalData} />
         <Learning />
-        <Report />
+        <Tokens />
       </div>
       <div className="content-grid-two">
         <div className="grid-two-item">
@@ -36,7 +36,7 @@ function ContentMain({ finalData }: TFinalDataProps) {
         </div>
         <div className="grid-two-item">
           <div className="subgrid-two">
-            <Tokens />
+            <Report />
             <Finance />
           </div>
         </div>

@@ -15,7 +15,10 @@ const Loans = () => {
       <div className="grid-c5-content">
         <div className="grid-items">
           {loans.map((loan) => (
-            <div className="grid-item" key={loan.id}>
+            <div
+              className="grid-item cursor-pointer hover:bg-primary-light rounded-sm p-2 ease-in duration-150 hover:scale-95"
+              key={loan.id}
+            >
               <div className="grid-item-l">
                 <div className="icon">
                   <img src={iconsImgs.alert} />

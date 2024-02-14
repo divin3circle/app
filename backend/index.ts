@@ -331,4 +331,145 @@ export function voteOnProposal(
   proposals.insert(proposalId, updatedProposal);
   return true;
 }
-//approve proposal
+//approve proposal, to be used once users are allowed to make proposals
+$update;
+export function approveProposal(proposalId: text): boolean {
+  const proposalOpt = proposals.get(proposalId);
+  const totalUsers = getNumberOfUsers();
+  if ('None' in proposalOpt) {
+    return false;
+  }
+  const updatedProposal = {
+    id: proposalOpt.Some.id,
+    title: proposalOpt.Some.title,
+    description: proposalOpt.Some.description,
+    datePublished: proposalOpt.Some.datePublished,
+    votes: proposalOpt.Some.votes,
+    status: 'approved',
+    owner: proposalOpt.Some.owner,
+    isApproved: proposalOpt.Some.isApproved,
+  };
+  const proposalVotes = proposalOpt.Some.votes;
+  if (proposalVotes > totalUsers / BigInt(2)) {
+    proposals.insert(proposalId, updatedProposal);
+    return true;
+  }
+  return false;
+}
+
+//stake tokens
+$update;
+export function stakeTokens(
+  userId: text,
+  amount: nat,
+  dateStaked: text,
+  maturityDate: text,
+): boolean {
+  const userOpt = getUser(userId);
+  if ('None' in userOpt) {
+    return false;
+  }
+  //staking has no transaction cost
+  if (amount < userOpt.Some.tokenBalance) {
+    const votingPower =
+      (userOpt.Some.stakedAmount / BigInt(10_000_000)) * BigInt(100); //hypothetical formula
+    const updatedUser = {
+      id: userOpt.Some.id,
+      username: userOpt.Some.username,
+      membershipDate: userOpt.Some.membershipDate,
+      role: userOpt.Some.role,
+      businessType: userOpt.Some.businessType,
+      teams: userOpt.Some.teams,
+      tokenBalance: userOpt.Some.tokenBalance - amount,
+      stakedAmount: userOpt.Some.stakedAmount + amount,
+      dateStaked: dateStaked,
+      hasEducationalAccess: userOpt.Some.hasEducationalAccess,
+      proposals: userOpt.Some.proposals,
+      votingPower: userOpt.Some.votingPower + votingPower,
+      votingPowerMaturityDate: maturityDate,
+    };
+    users.insert(userId, updatedUser);
+    return true;
+  }
+
+  return true;
+}
+
+//unstake tokens
+$update;
+export function unstakeTokens(userId: text, amount: nat): boolean {
+  const userOpt = getUser(userId);
+  if ('None' in userOpt) {
+    return false;
+  }
+  if (amount < userOpt.Some.stakedAmount) {
+    const transactionCost = amount * BigInt(0.1);
+    const votingPower =
+      (userOpt.Some.stakedAmount / BigInt(10_000_000)) * BigInt(100); //hypothetical formula
+    const updatedUser = {
+      id: userOpt.Some.id,
+      username: userOpt.Some.username,
+      membershipDate: userOpt.Some.membershipDate,
+      role: userOpt.Some.role,
+      businessType: userOpt.Some.businessType,
+      teams: userOpt.Some.teams,
+      tokenBalance: userOpt.Some.tokenBalance + amount - transactionCost,
+      stakedAmount: userOpt.Some.stakedAmount - amount,
+      dateStaked: '',
+      hasEducationalAccess: userOpt.Some.hasEducationalAccess,
+      proposals: userOpt.Some.proposals,
+      votingPower: userOpt.Some.stakedAmount,
+      votingPowerMaturityDate: '',
+    };
+    users.insert(userId, updatedUser);
+    return true;
+  }
+  return true;
+}
+
+//get percentage of staked tokens
+$query;
+export function getPercentageStaked(userId: text): nat {
+  const userOpt = getUser(userId);
+  if ('None' in userOpt) {
+    return BigInt(0);
+  }
+  const totalTokens = userOpt.Some.tokenBalance + userOpt.Some.stakedAmount;
+  return (userOpt.Some.stakedAmount * BigInt(100)) / totalTokens;
+}
+//get voting power
+$query;
+export function getVotingPower(userId: text): nat {
+  const userOpt = getUser(userId);
+  if ('None' in userOpt) {
+    return BigInt(0);
+  }
+  return userOpt.Some.votingPower;
+}
+//get staked amount
+$query;
+export function getStakedAmount(userId: text): nat {
+  const userOpt = getUser(userId);
+  if ('None' in userOpt) {
+    return BigInt(0);
+  }
+  return userOpt.Some.stakedAmount;
+}
+//get token balance
+$query;
+export function getTokenBalance(userId: text): nat {
+  const userOpt = getUser(userId);
+  if ('None' in userOpt) {
+    return BigInt(0);
+  }
+  return userOpt.Some.tokenBalance;
+}
+//get maturity date
+$query;
+export function getMaturityDate(userId: text): text {
+  const userOpt = getUser(userId);
+  if ('None' in userOpt) {
+    return '';
+  }
+  return userOpt.Some.votingPowerMaturityDate;
+}

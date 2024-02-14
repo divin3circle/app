@@ -36,8 +36,8 @@ function UserInfo() {
       businessType: business,
       membershipDate: new Date().toISOString(),
     };
-    console.log(userData);
-    console.log(newUser);
+    // console.log(userData);
+    // console.log(newUser);
     //fetch the unregistered user from backend to get their id, set up in the Hero component
     const unRegisteredUser = await backend.getUser(newUser.id);
     //update the data of now registered user to the backend and send it to the backend

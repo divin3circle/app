@@ -43,18 +43,26 @@ service : () -> {
       opt EducationalContent,
     );
   addUserToTeam : (text, text) -> (bool);
+  approveProposal : (text) -> (bool);
   checkEducationalAccess : (text) -> (bool) query;
   createProposal : (Proposal) -> (Proposal);
   createUser : (User) -> (User);
   getAllProposals : () -> (vec Proposal) query;
+  getMaturityDate : (text) -> (text) query;
   getNumberOfUsers : () -> (int) query;
+  getPercentageStaked : (text) -> (nat) query;
   getProposal : (text) -> (opt Proposal) query;
   getProposals : () -> (vec Proposal) query;
+  getStakedAmount : (text) -> (nat) query;
   getTeams : () -> (vec Team) query;
+  getTokenBalance : (text) -> (nat) query;
   getUser : (text) -> (opt User) query;
   getUsers : () -> (vec User) query;
+  getVotingPower : (text) -> (nat) query;
   isTeamPremium : (text) -> (bool) query;
   isUserMemberOfTeam : (text, text) -> (bool) query;
+  stakeTokens : (text, nat, text, text) -> (bool);
+  unstakeTokens : (text, nat) -> (bool);
   updateProposal : (text, Proposal) -> (bool);
   updateUser : (text, User) -> (bool);
   voteOnProposal : (text, text, nat) -> (bool);
