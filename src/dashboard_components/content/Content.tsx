@@ -11,7 +11,7 @@ type TFinalDataProps = {
 };
 function Content({ finalData }: TFinalDataProps) {
   return (
-    <div className="main-content" style={{ borderRadius: '0 10px 10px 0' }}>
+    <div className="main-content">
       <ContentTop />
       <ContentMain finalData={finalData} />
     </div>

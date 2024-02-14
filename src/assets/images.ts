@@ -18,6 +18,8 @@ import wealth from '../assets/icons/wealth.svg';
 import team1 from '../assets/team1.jpeg';
 import team from '../assets/team2.webp';
 import team3 from '../assets/team3.jpeg';
+import out from '../assets/icons/out.svg';
+import out2 from '../assets/icons/out2.svg';
 
 export const iconsImgs = {
   alert,
@@ -37,6 +39,7 @@ export const iconsImgs = {
   user,
   wallet,
   wealth,
+  out2,
 };
 
 export const teamImgs = {

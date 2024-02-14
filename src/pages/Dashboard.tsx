@@ -1,6 +1,6 @@
 import { User, signOut } from '@junobuild/core';
 import React from 'react';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { StepperContext } from '../context/StepperContext';
 import Sidebar from '../dashboard_components/sidebar/Sidebar';
 import Content from '../dashboard_components/content/Content';
@@ -20,8 +20,11 @@ function Dashboard({ finalData }: TDashboardProps): JSX.Element {
   // const { userData, setUserData } = useContext(StepperContext);
   const { userData, setUserData } = useContext(DataContext);
   console.log(userData);
+  useEffect(() => {}, []);
+
+  // console.log(userData);
   return (
-    <div className="app md:m-4">
+    <div className="app">
       <Sidebar finalData={finalData} />
 
       <Content finalData={finalData} />
@@ -41,6 +44,9 @@ function Dashboard({ finalData }: TDashboardProps): JSX.Element {
         <h1>Not logged in</h1>
       )}
     </div> */}
+      {/* <button onClick={() => signOut()} className="py-4 px-4 bg-orange-600">
+        sign out
+      </button> */}
     </div>
   );
 }

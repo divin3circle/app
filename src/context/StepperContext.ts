@@ -6,13 +6,13 @@ export type UserData = {
   membershipDate: string;
   role: string;
   businessType: string;
-  teams: Team[] | [];
-  tokenBalance: number;
-  stakedAmount: number;
+  teams: Team[];
+  tokenBalance: bigint;
+  stakedAmount: bigint;
   dateStaked: string;
   hasEducationalAccess: boolean;
-  proposals: Proposal[] | [];
-  votingPower: number;
+  proposals: Proposal[];
+  votingPower: bigint;
   votingPowerMaturityDate: string;
 };
 
@@ -21,7 +21,7 @@ export type Proposal = {
   title: string;
   description: string;
   datePublished: string;
-  votes: number;
+  votes: bigint;
   status: string;
   owner: string;
   isApproved: boolean;
@@ -31,8 +31,8 @@ export type Team = {
   id: string;
   name: string;
   description: string;
-  members: UserData[] | [];
-  content: EducationalContent[] | [];
+  members: UserData[];
+  content: EducationalContent[];
 };
 
 export type EducationalContent = {
@@ -51,12 +51,12 @@ export const StepperContext = createContext({
     membershipDate: '',
     role: '',
     businessType: '',
-    teams: [],
+    teams: [] as Team[],
     tokenBalance: 10,
     stakedAmount: 0,
     dateStaked: '',
     hasEducationalAccess: false,
-    proposals: [],
+    proposals: [] as Proposal[],
     votingPower: 0,
     votingPowerMaturityDate: 'December 31, 2021',
   },

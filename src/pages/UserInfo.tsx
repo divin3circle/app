@@ -3,6 +3,7 @@ import Navbar from '../components/header/Navbar';
 import { DataContext } from '../context/DataContext';
 import Loading from '../components/ui/Loading';
 import { useNavigate } from 'react-router-dom';
+import { backend } from '../declarations/backend';
 
 function UserInfo() {
   const { userData, setUserData } = useContext(DataContext);
@@ -26,18 +27,28 @@ function UserInfo() {
     setBusiness(event.target.value);
   };
 
-  const handleInfo = () => {
+  const handleInfo = async () => {
     setLoading(true);
     const newUser = {
       ...userData,
       username: name,
       role: communityRole,
       businessType: business,
+      membershipDate: new Date().toISOString(),
     };
-
-    console.log(newUser);
     console.log(userData);
-    setUserData({ ...newUser });
+    console.log(newUser);
+    //fetch the unregistered user from backend to get their id, set up in the Hero component
+    const unRegisteredUser = await backend.getUser(newUser.id);
+    //update the data of now registered user to the backend and send it to the backend
+    const registeredUser = await { ...newUser };
+    //send the registered user to the backend
+    const updated = await backend.updateUser(registeredUser.id, registeredUser);
+    // console.log(updated);
+    //verify if the user is updated and set the user data to the new user
+    // const vfu = await backend.getUser(newUser.id);
+    // console.log(updated, vfu);
+    setUserData({ ...registeredUser });
     setLoading(false);
     navigate('/dashboard');
   };

@@ -12,6 +12,7 @@ export const navigationLinks = [
   { id: 8, title: 'AI Financials', image: iconsImgs.wealth },
   { id: 9, title: 'Account', image: iconsImgs.user },
   { id: 10, title: 'Settings', image: iconsImgs.gears },
+  { id: 11, title: 'Sign Out', image: iconsImgs.out2 },
 ];
 
 export const learningTeams = [

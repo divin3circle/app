@@ -25,20 +25,7 @@ type Team = record {
 };
 type User = record {
   id : text;
-  teams : vec record {
-    id : text;
-    content : vec record {
-      id : text;
-      title : text;
-      content : text;
-      link : text;
-      paid : bool;
-      datePublished : text;
-    };
-    members : vec User;
-    name : text;
-    description : text;
-  };
+  teams : vec Team;
   votingPowerMaturityDate : text;
   username : text;
   votingPower : nat;
@@ -46,22 +33,29 @@ type User = record {
   businessType : text;
   dateStaked : text;
   membershipDate : text;
-  proposals : vec record {
-    id : text;
-    status : text;
-    isApproved : bool;
-    title : text;
-    owner : text;
-    votes : nat;
-    datePublished : text;
-    description : text;
-  };
+  proposals : vec Proposal;
   tokenBalance : nat;
   stakedAmount : nat;
   hasEducationalAccess : bool;
 };
 service : () -> {
+  addEducationalContent : (text, EducationalContent) -> (
+      opt EducationalContent,
+    );
+  addUserToTeam : (text, text) -> (bool);
+  checkEducationalAccess : (text) -> (bool) query;
+  createProposal : (Proposal) -> (Proposal);
   createUser : (User) -> (User);
-  getUser : (text) -> (bool) query;
+  getAllProposals : () -> (vec Proposal) query;
+  getNumberOfUsers : () -> (int) query;
+  getProposal : (text) -> (opt Proposal) query;
+  getProposals : () -> (vec Proposal) query;
+  getTeams : () -> (vec Team) query;
+  getUser : (text) -> (opt User) query;
   getUsers : () -> (vec User) query;
+  isTeamPremium : (text) -> (bool) query;
+  isUserMemberOfTeam : (text, text) -> (bool) query;
+  updateProposal : (text, Proposal) -> (bool);
+  updateUser : (text, User) -> (bool);
+  voteOnProposal : (text, text, nat) -> (bool);
 }

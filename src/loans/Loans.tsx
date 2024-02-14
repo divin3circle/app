@@ -8,9 +8,9 @@ const Loans = () => {
     <div className="subgrid-two-item grid-common grid-c5">
       <div className="grid-c-title">
         <h3 className="grid-c-title-text">Loans & Grants Available</h3>
-        <button className="grid-c-title-icon">
+        {/* <button className="grid-c-title-icon">
           <img src={iconsImgs.plus} />
-        </button>
+        </button> */}
       </div>
       <div className="grid-c5-content">
         <div className="grid-items">
@@ -26,7 +26,7 @@ const Loans = () => {
               </div>
               <div className="grid-item-r">
                 <span className="text-silver-v1 text-sm">
-                  Ksh.{loan.amount}
+                  {loan.amount} WRB
                 </span>
               </div>
             </div>

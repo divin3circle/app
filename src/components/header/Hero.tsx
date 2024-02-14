@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
   InternetIdentityProvider,
   signIn,
@@ -9,13 +9,14 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { TLoadingProps } from '../../pages/Landing';
 import { backend } from '../../declarations/backend';
-
+import { DataContext } from '../../context/DataContext';
 type THeroProps = {
   loading: boolean;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const Hero = ({ loading, setLoading }: THeroProps) => {
+  const { userData, setUserData } = useContext(DataContext);
   const [user, setUser] = useState<User | undefined | null>(undefined);
   useEffect(() => {
     const checkMembership = async () => {
@@ -26,13 +27,20 @@ const Hero = ({ loading, setLoading }: THeroProps) => {
       //console.log(user);
       if (user?.key !== null && user?.key !== undefined) {
         //console.log(user);
-        const userKey = user.key;
+        const userKey = user.key.toString();
+        localStorage.setItem('userKey', userKey);
         //console.log(userKey);
         const isMember = await backend.getUser(userKey);
         //console.log(isMember);
-        if (isMember) {
+        if (isMember.length !== 0) {
+          const currentUser = await backend.getUser(userKey);
+          setUserData({ ...userData, id: userKey });
           navigate('/dashboard');
         } else {
+          const newUser = { ...userData, id: userKey };
+          console.log(newUser);
+          setUserData({ ...userData, id: userKey });
+          const currentUser = await backend.createUser(newUser);
           navigate('/user-info');
         }
       }

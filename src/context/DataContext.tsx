@@ -12,20 +12,23 @@ interface DataProviderProps {
   children: ReactNode;
 }
 
-export const DataContext = createContext({
+export const DataContext = createContext<{
+  userData: UserData;
+  setUserData: (user: UserData) => void;
+}>({
   userData: {
     id: '',
     username: '',
     membershipDate: '',
     role: '',
     businessType: '',
-    teams: [] as Team[] | [],
+    teams: [] as Team[],
     tokenBalance: 10,
     stakedAmount: 0,
     dateStaked: '',
     hasEducationalAccess: false,
-    proposals: [] as Proposal[] | [],
-    votingPower: 0,
+    proposals: [] as Proposal[],
+    votingPower: BigInt(0),
     votingPowerMaturityDate: '',
   },
   setUserData: (userData: UserData) => {},
@@ -38,13 +41,13 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
     membershipDate: '',
     role: '',
     businessType: '',
-    teams: [],
+    teams: [] as Team[],
     tokenBalance: 10,
     stakedAmount: 0,
     dateStaked: '',
     hasEducationalAccess: false,
-    proposals: [],
-    votingPower: 0,
+    proposals: [] as Proposal[],
+    votingPower: BigInt(0),
     votingPowerMaturityDate: '',
   });
 

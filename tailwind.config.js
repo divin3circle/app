@@ -6,6 +6,10 @@ module.exports = {
       fontFamily: {
         mono: ['ui-monospace', 'SFMono-Regular'],
       },
+      colors: {
+        primary: '#fe1e00',
+        'primary-light': '#473b33',
+      },
     },
   },
   plugins: [],
