@@ -95,3 +95,27 @@ Inua DAO aims for a financially sustainable model beyond empowering women entrep
 - **Community Oversight:** Publish financial reports, conduct audits, and allow token holders to vote on major decisions.
 - **Investment Strategies:** Diversify investment strategies for treasury funds.
 - **Continuous Improvement:** Regularly review and adapt the financial model based on community feedback.
+
+## Local Setup
+
+To set up the project locally, follow the steps below:
+
+1.Run the following command to start the dfx in the background:
+
+```sh
+dfx start --clean --background
+
+```
+
+2.Deploy backend canister:
+
+```sh
+    dfx deploy bacend
+```
+
+3.Deploy frontend canisters:
+
+```sh
+npm run setup # Install packages, deploy canisters, and generate type bindings
+npm start # Start the development server
+```
