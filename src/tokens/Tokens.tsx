@@ -68,7 +68,7 @@ const Tokens = () => {
 
   if (loading) return <Loading />;
   return (
-    <div className="subgrid-two-item grid-common grid-c7">
+    <div className="subgrid-two-item grid-common grid-c7 w-full">
       <div className="grid-c-title">
         <h3 className="grid-c-title-text">Financials</h3>
         <button

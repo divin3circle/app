@@ -18,25 +18,28 @@ type TFinalDataProps = {
 function ContentMain({ finalData }: TFinalDataProps) {
   return (
     <div className="main-content-holder">
-      <div className="content-grid-one">
+      <div className="content-grid-one md:grid-cols-2">
         <Cards finalData={finalData} />
         <Learning />
-        <Tokens />
+        {/* <Tokens /> */}
       </div>
+      {/* <div className="max-w-[800px] mx-auto my-0">
+       
+      </div> */}
       <div className="content-grid-two">
         <div className="grid-two-item">
-          {' '}
           <Proposal />
         </div>
         <div className="grid-two-item">
           <div className="subgrid-two">
-            <Loans />
+            <Tokens />
+
             <Monthly />
           </div>
         </div>
         <div className="grid-two-item">
           <div className="subgrid-two">
-            <Report />
+            <Loans />
             <Finance />
           </div>
         </div>
