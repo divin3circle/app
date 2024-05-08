@@ -2,6 +2,7 @@
   "canisters": {
     "backend": {
       "type": "custom",
+      "main": "backend/index.ts",
       "build": "npx azle backend",
       "root": "src",
       "ts": "backend/index.ts",

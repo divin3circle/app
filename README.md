@@ -110,7 +110,7 @@ dfx start --clean --background
 2.Deploy backend canister:
 
 ```sh
-    dfx deploy bacend
+    dfx deploy backend
 ```
 
 3.Deploy frontend canisters:
