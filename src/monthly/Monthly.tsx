@@ -112,7 +112,7 @@ const Monthly = () => {
                     >
                       <div>
                         <strong className="flex items-center justify-center text-2xl text-primary">
-                          {remPercentage}%
+                          {Math.floor(remPercentage)}%
                         </strong>
                         <h1 className="text-primary flex justify-center items-center text-xl gap-2 font-bold mt-4">
                           <FaClock /> there
