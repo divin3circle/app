@@ -42,12 +42,12 @@ function Details({ finalData, setFinalData }: TDetailsProps): JSX.Element {
     role: '',
     businessType: '',
     teams: [],
-    tokenBalance: 10,
-    stakedAmount: 0,
+    tokenBalance: BigInt(10),
+    stakedAmount: BigInt(0),
     dateStaked: '',
     hasEducationalAccess: false,
     proposals: [],
-    votingPower: 0,
+    votingPower: BigInt(0),
     votingPowerMaturityDate: '',
   });
 
